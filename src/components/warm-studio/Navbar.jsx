@@ -19,7 +19,7 @@ export default function Navbar() {
         className={cn(
           'pointer-events-auto flex items-center justify-between rounded-full px-8 py-4 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]',
           scrolled
-            ? 'w-[min(90%,800px)] luxe-glass'
+            ? 'w-[min(90%,800px)] luxe-glass backdrop-blur-xl'
             : 'w-full max-w-7xl border border-transparent bg-transparent'
         )}
       >

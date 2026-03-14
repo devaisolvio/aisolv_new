@@ -98,26 +98,29 @@ body {
   color: var(--color-accent);
 }
 
+/* Glassmorphism: outside @layer so it always ships and isn't reordered in production */
+.luxe-glass {
+  isolation: isolate;
+  background: var(--color-glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 30px var(--color-glass-shadow), inset 0 1px 0 var(--color-glass-inset);
+  transition: background 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.luxe-glass:hover {
+  background: var(--color-glass-bg-hover);
+  border-color: var(--color-border-highlight);
+  box-shadow: 0 8px 40px var(--color-glass-shadow), inset 0 1px 0 var(--color-glass-inset);
+}
+
 /* Base custom utility classes */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
-
-  /* Glassmorphism Utilities */
-  .luxe-glass {
-    background: var(--color-glass-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--color-border);
-    box-shadow: 0 4px 30px var(--color-glass-shadow), inset 0 1px 0 var(--color-glass-inset);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .luxe-glass:hover {
-    background: var(--color-glass-bg-hover);
-    border-color: var(--color-border-highlight);
-    box-shadow: 0 8px 40px var(--color-glass-shadow), inset 0 1px 0 var(--color-glass-inset);
   }
 
   /* Accent Gradients */
