@@ -14,7 +14,12 @@ gsap.registerPlugin(ScrollTrigger);
 const contactItems = [
   { label: 'Email', value: 'admin@aisolv.io', href: 'mailto:admin@aisolv.io', Icon: Mail },
   { label: 'Phone', value: '+1 (609) 873-5310', href: 'tel:+16098735310', Icon: Phone },
-  { label: 'Location', value: '802 Atkinson Cir, Hillsborough, NJ 08844', Icon: MapPin },
+  {
+    label: 'Location',
+    value: '802 Atkinson Cir, Hillsborough, NJ 08844',
+    href: 'https://www.google.com/maps/search/?api=1&query=802+Atkinson+Cir,+Hillsborough,+NJ+08844',
+    Icon: MapPin,
+  },
 ];
 
 const supportItems = [
@@ -103,6 +108,15 @@ export default function Contact() {
 
   async function handleSubmit(event) {
     event.preventDefault();
+
+    if (!FORM_WEBHOOK_URL?.trim()) {
+      setSubmitState({
+        type: 'error',
+        message:
+          'Form is not configured. Please set VITE_FORM_WEBHOOK_URL or contact us via email.',
+      });
+      return;
+    }
 
     const form = event.currentTarget;
     const formData = new FormData(form);
@@ -303,7 +317,10 @@ export default function Contact() {
                     />
                     <span className="font-sans text-sm font-light leading-relaxed text-(--color-text-primary)/55">
                       I agree to the{' '}
-                      <a href="#" className="underline underline-offset-4 hover:text-(--color-text-primary)">
+                      <a
+                        href="/terms"
+                        className="underline underline-offset-4 hover:text-(--color-text-primary)"
+                      >
                         terms and conditions
                       </a>
                     </span>
@@ -329,10 +346,12 @@ export default function Contact() {
 
                   {submitState.message && (
                     <p
+                      role="alert"
+                      aria-live="polite"
                       className={`font-sans text-sm font-light ${
                         submitState.type === 'success'
                           ? 'text-(--color-accent)'
-                          : 'text-(--color-text-primary)/55'
+                          : 'text-red-400/90'
                       }`}
                     >
                       {submitState.message}

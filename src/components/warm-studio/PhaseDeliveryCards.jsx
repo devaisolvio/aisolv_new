@@ -174,7 +174,7 @@ export default function PhaseDeliveryCards() {
                         </svg>
                       </div>
 
-                      <div className="flex flex-col justify-center md:w-1/2">
+                      <div className="mt-4 flex flex-col justify-center md:w-1/2">
                         <div className="mb-6 flex items-center gap-3">
                           <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--color-accent)]"></div>
                           <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-text-primary)]/50">
@@ -189,9 +189,9 @@ export default function PhaseDeliveryCards() {
                           {phase.bullets.map((bullet) => (
                             <div
                               key={bullet}
-                              className="rounded-lg border border-[var(--color-text-primary)]/5 bg-[var(--color-base)]/30 px-4 py-3"
+                              className="group rounded-lg border border-[var(--color-text-primary)]/5 bg-[var(--color-base)]/30 px-4 py-3 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[var(--color-text-primary)]/15 hover:bg-[var(--color-base)]/50 hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)]"
                             >
-                              <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-text-primary)]/60">
+                              <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-text-primary)]/60 transition-colors duration-300 group-hover:text-[var(--color-text-primary)]/90">
                                 {bullet}
                               </span>
                             </div>
