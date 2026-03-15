@@ -117,6 +117,15 @@ body {
   box-shadow: 0 8px 40px var(--color-glass-shadow), inset 0 1px 0 var(--color-glass-inset);
 }
 
+/* Navbar: keep width + backdrop-filter animation when glass is applied (luxe-glass overrides transition otherwise) */
+nav.luxe-glass {
+  transition: width 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    backdrop-filter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
 /* Base custom utility classes */
 @layer utilities {
   .text-balance {

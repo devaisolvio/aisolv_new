@@ -11,6 +11,29 @@ import { fetchBlogs } from '../lib/blog';
 
 gsap.registerPlugin(ScrollTrigger);
 
+function BlogCardSkeleton({ className = '' }) {
+  return (
+    <div
+      className={`overflow-hidden rounded-2xl luxe-glass ${className}`.trim()}
+      aria-hidden
+    >
+      <div className="flex h-full flex-col bg-(--color-text-primary)/1 p-6 md:p-8">
+        <div className="mb-4 flex items-center justify-between gap-3">
+          <span className="h-3 w-12 animate-pulse rounded bg-(--color-text-primary)/15" />
+          <span className="h-3 w-16 animate-pulse rounded bg-(--color-text-primary)/10" />
+        </div>
+        <div className="mb-3 h-6 w-full max-w-[85%] animate-pulse rounded bg-(--color-text-primary)/15 md:h-7" />
+        <div className="mb-2 h-4 w-full animate-pulse rounded bg-(--color-text-primary)/10" />
+        <div className="mb-2 h-4 w-full animate-pulse rounded bg-(--color-text-primary)/10" />
+        <div className="mb-2 h-4 w-3/4 animate-pulse rounded bg-(--color-text-primary)/10" />
+        <div className="mt-4 flex items-center gap-2">
+          <span className="h-3 w-20 animate-pulse rounded bg-(--color-text-primary)/10" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function PostCard({ post, className = '' }) {
   const date = post.created_at
     ? new Date(post.created_at).toLocaleDateString('en-US', {
@@ -167,10 +190,10 @@ export default function Blog() {
         <section className="border-b border-(--color-text-primary)/5 bg-(--color-surface) py-20 lg:py-24">
           <div className="mx-auto max-w-7xl px-6">
             {loading && (
-              <div className="flex min-h-[280px] items-center justify-center">
-                <p className="font-sans text-sm font-light text-(--color-text-primary)/50">
-                  Loading posts...
-                </p>
+              <div className="blog-grid grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <BlogCardSkeleton key={i} />
+                ))}
               </div>
             )}
 
