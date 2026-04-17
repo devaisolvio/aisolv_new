@@ -189,3 +189,39 @@ nav.luxe-glass {
 .btn-magnetic-bg:hover::before {
   transform: translateX(100%);
 }
+
+/*
+ * Mermaid flowcharts (draft workflow): no solid fills on edge labels, clusters, or nodes.
+ * Edge label layer is moved to end of SVG in WorkflowMermaid to reduce line-through text.
+ */
+.workflow-mermaid svg .edgeLabel rect {
+  fill: transparent !important;
+  opacity: 1 !important;
+}
+
+.workflow-mermaid svg .edgeLabel p,
+.workflow-mermaid svg .edgeLabel span {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+.workflow-mermaid svg foreignObject .label div {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+.workflow-mermaid svg .labelBkg {
+  background-color: transparent !important;
+}
+
+.workflow-mermaid svg .cluster rect {
+  fill: transparent !important;
+}
+
+.workflow-mermaid svg .node rect,
+.workflow-mermaid svg .node circle,
+.workflow-mermaid svg .node ellipse,
+.workflow-mermaid svg .node polygon,
+.workflow-mermaid svg .node path {
+  fill: transparent !important;
+}
